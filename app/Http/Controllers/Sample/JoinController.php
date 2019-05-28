@@ -33,10 +33,10 @@ class JoinController extends Controller {
             $arr = [];
             $arr['item_id'] = $d->item_id;
             $arr['item_name'] = $d->item_name;
-            $arr['availability'] = $d->availability;
             $arr['created_at'] = $d->created_at;
             $arr['category_id'] = $d->category_id;
             $arr['category_name'] = '';
+            $arr['exportability'] = 0;
             $item[$d->item_id] = $arr;
         }
 
@@ -45,6 +45,7 @@ class JoinController extends Controller {
             foreach ($obj as $d2) {
                 if ($d1['category_id'] == $d2->category_id) {
                     $item[$k]['category_name'] = $d2->category_name;
+                    $item[$k]['exportability'] = $d2->exportability;
                 }
             }
         }

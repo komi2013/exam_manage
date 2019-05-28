@@ -28,7 +28,7 @@
 <div id="ad" style="text-align: center;"><iframe src="/htm/ad/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 
 <table border="1">
-<tr><th style="width:33%;">商品名</th><th style="width:33%;">カテゴリ名</th><th style="width:33%;">販売可</th></tr>
+<tr><th style="width:33%;">商品名</th><th style="width:33%;">カテゴリ名</th><th style="width:33%;">輸出可</th></tr>
 <?php foreach ($item as $d) {?>
 <tr><td>
     <?=$d['item_name']?>
@@ -37,7 +37,7 @@
     <?=$d['category_name']?>
   </td>
   <td>
-    <?=$d['availability']?>
+    <?=$d['exportability']?>
   </td>
 </tr>
 <?php } ?>
