@@ -6,11 +6,28 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
+
 class JoinController extends Controller {
 
-    public function index(Request $request) {
+    public function index(Request $request, $directory=null, $controller=null, 
+            $action=null, $date='2019-05-27') {
         
-        
+//// フェイクデータを生成するジェネレータを作成
+//$faker = \Faker\Factory::create();
+//
+//// 日本人の氏名を10人分出力
+//for ($i = 0; $i < 10; $i++) {
+//  echo $faker->word(20) . "<br>";
+//}
+//die;
+//        $obj = DB::table('sekaimon')->get();
+//        foreach ($obj as $d) {
+//            DB::table('t_item')
+//                    ->insert([
+//                        "item_name" => $d->original
+//                    ]);
+//        }
+//        die;
 //        $obj = DB::table('t_item')->orderBy('item_id','asc')->get();
 //        $created_at = Carbon::now();
 //        foreach ($obj as $d) {
@@ -18,16 +35,14 @@ class JoinController extends Controller {
 //                    ->update([
 //                        "created_at" => $created_at->format('Y-m-d H:i:s')
 //                    ]);
-//            $created_at->addSecond(1);
+//            $created_at->addMinute(30);
 //        }
 //        
 //        die('done');
 
-        $obj = DB::table('t_item')
-                ->where("created_at", '>' ,'2019-05-27 06:07:00')
-                ->where("created_at", '<' ,'2019-05-27 06:08:00')
-                ->get();
+        $obj = DB::table('t_item')->whereDate('created_at', '=', $date)->get();
         $arr_category_ids = [];
+        $item = [];
         foreach ($obj as $d) {
             $arr_category_ids[] = $d->category_id;
             $arr = [];
@@ -50,7 +65,7 @@ class JoinController extends Controller {
             }
         }
         
-        return view('sample.join', compact('item'));
+        return view('sample.join', compact('item','date'));
 
     }
 

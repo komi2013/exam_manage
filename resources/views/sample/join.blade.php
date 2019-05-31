@@ -29,7 +29,7 @@
 
 <table border="1">
 <tr><th style="width:33%;">商品名</th><th style="width:33%;">カテゴリ名</th><th style="width:33%;">輸出可</th></tr>
-<?php foreach ($item as $d) {?>
+<?php foreach ($item as $d) { if($d['exportability'] != 3){?>
 <tr><td>
     <?=$d['item_name']?>
   </td>
@@ -37,28 +37,25 @@
     <?=$d['category_name']?>
   </td>
   <td>
-    <?=$d['exportability']?>
+    <?php if($d['exportability'] == 1) {?>
+      OK
+    <?php } else if ($d['exportability'] == 2) {?>
+      ???
+    <?php } ?>
   </td>
 </tr>
-<?php } ?>
+<?php } } ?>
 </table>
 
 <br>
-<input type="text" placeholder="商品名" id="item_name">
+<input type="text" placeholder="商品名" id="item_name" value="<?=$date?>">
 <input type="submit" value="登録" id="submit">
 </div>
 <div id="ad_right"><iframe src="/htm/ad_right/" width="160" height="600" frameborder="0" scrolling="no"></iframe></div>
 
 <script>
 $('#submit').click(function(){
-    var param = {
-        _token : $('[name="csrf-token"]').attr('content')
-        ,item_name : $('#item_name').val()
-    }
-    $.post('/Sample/AddItem/',param,function(){},"json")
-    .always(function(res){
-        console.log(res);
-    });
+    location.href = '/Sample/Join/index/'+ $('#item_name').val() +'/';
 });
 </script>
 

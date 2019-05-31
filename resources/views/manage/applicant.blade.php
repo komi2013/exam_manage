@@ -2,8 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>美容室、理容店、サロン検索</title>
-    <meta name="description" content="美容室、理容店、サロン検索">
+    <title>Exam Manage</title>
     <meta name="google-site-verification" content="" />
 
     <link rel="shortcut icon" href="" />
@@ -16,6 +15,7 @@
     <link rel="stylesheet" href="/css/pc.css<?=config('my.cache_v')?>" media="only screen and (min-width : 711px)">
     <link rel="stylesheet" href="/css/sp.css<?=config('my.cache_v')?>" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
+    <meta name="csrf-token" content="<?=csrf_token()?>" />
   </head>
 <body>
 
@@ -27,71 +27,51 @@
 
 <div id="ad" style="text-align: center;"><iframe src="/htm/ad/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 
-<table>
+
 <?php foreach ($obj as $d) {?>
-<tr><th style="width:30%;">サロン名</th>
-  <td colspan="100" class="td_99_t">
-    <?=$d->salon_name?>
+<table style="margin:10px;">
+<tr>
+  <th>ID</th>
+  <td>
+    <?=$d->applicant_id?>
   </td>
 </tr>
-<tr><th>アドレス</th>
-  <td colspan="100" class="td_99_t">
-    <?=$d->address?>
+<tr>
+  <th>NAME</th>
+  <td>
+    <input type="text" value="<?=$d->applicant_name?>">
   </td>
 </tr>
-<tr><th>行き方</th>
-  <td colspan="100" class="td_99_t">
-    <?=$d->way?>
+<tr>
+  <th>FROM</th>
+  <td>
+    <?=$d->apply_from?>
   </td>
 </tr>
-<tr><th>電話番号</th>
-  <td colspan="100" class="td_99_t">
-    <?=$d->tel?>
+<tr>
+  <th>deadline</th>
+  <td>
+    <input type="date" value="<?=$d->deadline?>">
   </td>
 </tr>
-<tr><th>座席</th>
-  <td colspan="100" class="td_99_t">
-    <?=$d->seat_text?>
-  </td>
-</tr>
-<tr><th>休業日</th>
-  <td colspan="100" class="td_99_t">
-    <?=$d->off_day?>
-  </td>
-</tr>
-<tr><th>営業時間</th>
-  <td colspan="100" class="td_99_t">
-    <?=$d->opentime_text?>
-  </td>
-</tr>
-<tr><th>カット料金</th>
-  <td colspan="100" class="td_99_t">
-    <?=$d->price_text?>
-  </td>
-</tr>
-<tr><th>カット料金</th>
-  <td colspan="100" class="td_99_t">
-    <?=$d->price_text?>
-  </td>
-</tr>
-<tr><th>備考</th>
-  <td colspan="100" class="td_99_t">
-    <?=$d->note?>
-  </td>
-</tr>
-<tr><th>駐車場</th>
-  <td colspan="100" class="td_99_t">
-    <?=$d->car_parking_text?>
-  </td>
-</tr>
-<tr><td style="text-decoration: overline;">　</td><td style="text-decoration: overline;">　</td></tr>
-<?php } ?>
 </table>
+<?php } ?>
+
+
 </div>
 <div id="ad_right"><iframe src="/htm/ad_right/" width="160" height="600" frameborder="0" scrolling="no"></iframe></div>
 
 <script>
-
+$('#submit').click(function(){
+    var param = {
+        _token : $('[name="csrf-token"]').attr('content')
+        ,item_name : $('#item_name').val()
+    }
+    $.post('/Sample/AddItem/',param,function(){},"json")
+    .always(function(res){
+        console.log(res);
+    });
+});
 </script>
 
 <script>
