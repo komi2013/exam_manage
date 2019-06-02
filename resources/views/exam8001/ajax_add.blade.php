@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/css/pc.css<?=config('my.cache_v')?>" media="only screen and (min-width : 711px)">
     <link rel="stylesheet" href="/css/sp.css<?=config('my.cache_v')?>" media="only screen and (max-width : 710px)">
     <meta name="viewport" content="width=device-width, user-scalable=no" >
-    <meta name="csrf-token" content="<?=csrf_token()?>" />
+
   </head>
 <body>
 
@@ -49,8 +49,8 @@
 <script>
 $('#submit').click(function(){
     var param = {
-        _token : $('[name="csrf-token"]').attr('content')
-        ,item_name : $('#item_name').val()
+//        _token : $('[name="csrf-token"]').attr('content')
+        item_name : $('#item_name').val()
     }
     $.post('/Exam8001/AddItem/',param,function(){},"json")
     .always(function(res){
