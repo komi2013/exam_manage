@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => 'exam_manage',
+    'default' => 'exam_8001',
 
     /*
     |--------------------------------------------------------------------------
@@ -33,8 +33,20 @@ return [
 
     'connections' => [
 
-        'exam_manage' => ['driver'=>'pgsql','database'=>'exam_manage','username' => 'exam','password' => 'bo1nraav','charset' => 'utf8',],
-        'exam8001' =>    ['driver'=>'pgsql','database'=>'exam8001','username' => 'exam8001','password' => 'bo1nraav','charset' => 'utf8',],
+        'exam_manage' => [
+            'driver'=>'pgsql',
+            'database'=>'exam_manage',
+            'username' => 'exam',
+            'password' => 'bo1nraav',
+            'charset' => 'utf8',
+            ],
+        'exam_8001' => [
+            'driver'=>'pgsql',
+            'database'=>'exam_8001',
+            'username' => 'exam_8001',
+            'password' => '',
+            'charset' => 'utf8',
+            ],
 
     ],
 

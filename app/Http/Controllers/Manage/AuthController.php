@@ -22,6 +22,12 @@ class AuthController extends Controller {
           .'&scope=openid'
           .'&redirect_uri=https://'.$_SERVER['HTTP_HOST'].'/Manage/Gpcallback/'
           ;
+        
+//        dd($_SESSION['db']);
+//        \Config::set('database.default', 'exam_manage');
+                $obj = DB::table('t_applicant')
+                ->get();
+        
         return view('manage.auth', compact('fb_url','gp_url','lang'));
     }
 
