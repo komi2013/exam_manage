@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>item list</title>
+    <title><?=$goup?></title>
     <meta name="google-site-verification" content="" />
 
     <link rel="shortcut icon" href="" />
@@ -26,36 +26,31 @@
 <div id="content">
 
 <div id="ad" style="text-align: center;"><iframe src="/htm/ad/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
-
-<table border="1">
-<tr><th style="width:33%;">item name</th><th style="width:33%;">category name</th><th style="width:33%;">exportability</th></tr>
-<?php foreach ($item as $d) { if($d['exportability'] != 3){?>
-<tr><td>
-    <?=$d['item_name']?>
-  </td>
-  <td>
-    <?=$d['category_name']?>
-  </td>
-  <td>
-    <?php if($d['exportability'] == 1) {?>
-      OK
-    <?php } else if ($d['exportability'] == 2) {?>
-      ???
-    <?php } ?>
-  </td>
-</tr>
-<?php } } ?>
-</table>
-
-<br>
-<input type="text" placeholder="item name" id="item_name" value="<?=$date?>">
-<input type="submit" value="submit" id="submit">
+<a href="/Manage/LL/index/?path=<?=$goup?>">go up</a><br><br>
+<?php foreach($list as $d){?>
+    <?php if($d['file']){?>
+    <a href="/Manage/File/edit/?path=<?=$d['path']?>" target="_blank"><?=$d['path']?></a>
+    <?php }else{?>
+    <a href="/Manage/LL/index/?path=<?=$d['path']?>"><?=$d['path']?></a>
+    <?php }?>
+    <br><br>
+<?php } ?>
 </div>
 <div id="ad_right"><iframe src="/htm/ad_right/" width="160" height="600" frameborder="0" scrolling="no"></iframe></div>
 
 <script>
+
 $('#submit').click(function(){
-    location.href = '/Sample/Join/index/'+ $('#item_name').val() +'/';
+    var param = {
+        _token : $('[name="csrf-token"]').attr('content')
+        ,applicant_name : $('#applicant_name').val()
+    }
+    $.post('/Applicant/Start/',param,function(){},"json")
+    .always(function(res){
+        if(res[0] == 1){
+            location.href = '';
+        }
+    });
 });
 </script>
 

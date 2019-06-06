@@ -8,17 +8,32 @@ use Illuminate\Support\Facades\DB;
 class LLController extends Controller {
 
     public function index(Request $request, $directory=null, $controller=null, 
-            $action=null, $dir='exam_manage/') {
+            $action=null) {
 //    	$list = $this->getFileList('/var/www/exam_manage/');
+//        echo base_path().$request->path.'*';
+//        die;
+//        $_path = base_path();
+//        die($_path);
         $list = [];
-        foreach(glob('/var/www/'.$dir.'*') as $file){
+        foreach(glob(base_path().$request->path.'*') as $k => $file){
+            $p = str_replace('/var/www/exam_manage', '', htmlspecialchars($file));
             if(is_file($file)){
-                $list[] = htmlspecialchars($file);
+                $list[$k]['path'] = $p;
+                $list[$k]['file'] = true;
+            } else if (is_dir($file)) {
+                $list[$k]['path'] = $p.'/';
+                $list[$k]['file'] = false;
             }
         }
-        
+        $arr = explode("/",$request->path);
+        $goup = '';
+        for ($i = 1; $i < count($arr)-2; $i++) {
+            $goup .= '/'.$arr[$i];
+        }
+        $goup .= '/';
 //        die;
-        dd($list);
+//        dd($goup);
+        return view('manage.ll', compact('list','goup'));
     }
     public function getFileList($dir) {
         $files = scandir($dir);

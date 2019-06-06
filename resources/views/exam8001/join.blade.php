@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>商品一覧</title>
+    <title>item list</title>
     <meta name="google-site-verification" content="" />
 
     <link rel="shortcut icon" href="" />
@@ -28,7 +28,7 @@
 <div id="ad" style="text-align: center;"><iframe src="/htm/ad/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 
 <table border="1">
-<tr><th style="width:33%;">商品名</th><th style="width:33%;">カテゴリ名</th><th style="width:33%;">輸出可</th></tr>
+<tr><th style="width:33%;">item name</th><th style="width:33%;">category name</th><th style="width:33%;">EXPORTABILITY</th></tr>
 <?php foreach ($item as $d) { if($d['exportability'] != 3){?>
 <tr><td>
     <?=$d['item_name']?>
@@ -48,8 +48,8 @@
 </table>
 
 <br>
-<input type="text" placeholder="商品名" id="item_name" value="<?=$date?>">
-<input type="submit" value="登録" id="submit">
+<input type="text" placeholder="item name" id="item_name" value="<?=$date?>">
+<input type="submit" value="submit" id="submit">
 </div>
 <div id="ad_right"><iframe src="/htm/ad_right/" width="160" height="600" frameborder="0" scrolling="no"></iframe></div>
 
