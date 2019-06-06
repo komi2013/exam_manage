@@ -75,7 +75,7 @@ $('#submit').click(function(){
 </script>
 
 <script>
-  $(function(){ $(function(){ ga('send', 'pageview'); }); });
+    setTimeout(ga('send', 'pageview'), 2000);
 </script>
 </body>
 </html>

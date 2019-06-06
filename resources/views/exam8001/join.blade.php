@@ -27,40 +27,11 @@
 
 <div id="ad" style="text-align: center;"><iframe src="/htm/ad/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 
-<table border="1">
-<tr><th style="width:33%;">item name</th><th style="width:33%;">category name</th><th style="width:33%;">EXPORTABILITY</th></tr>
-<?php foreach ($item as $d) { if($d['exportability'] != 3){?>
-<tr><td>
-    <?=$d['item_name']?>
-  </td>
-  <td>
-    <?=$d['category_name']?>
-  </td>
-  <td>
-    <?php if($d['exportability'] == 1) {?>
-      OK
-    <?php } else if ($d['exportability'] == 2) {?>
-      ???
-    <?php } ?>
-  </td>
-</tr>
-<?php } } ?>
-</table>
-
-<br>
-<input type="text" placeholder="item name" id="item_name" value="<?=$date?>">
-<input type="submit" value="submit" id="submit">
 </div>
 <div id="ad_right"><iframe src="/htm/ad_right/" width="160" height="600" frameborder="0" scrolling="no"></iframe></div>
 
 <script>
-$('#submit').click(function(){
-    location.href = '/Sample/Join/index/'+ $('#item_name').val() +'/';
-});
-</script>
-
-<script>
-  $(function(){ $(function(){ ga('send', 'pageview'); }); });
+    setTimeout(ga('send', 'pageview'), 2000);
 </script>
 </body>
 </html>

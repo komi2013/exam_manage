@@ -26,7 +26,7 @@
 <div id="content">
 
 <div id="ad" style="text-align: center;"><iframe src="/htm/ad/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
-
+<a href="/Manage/LL/index/?path=<?=$goup?>">go up</a><br><br>
 <textarea style="width:100%;height:500px;" id="data"><?=$data?></textarea>
 
 <div style="width:100%;text-align: center;">
@@ -52,7 +52,7 @@ $('#submit').click(function(){
 </script>
 
 <script>
-  $(function(){ ga('send', 'pageview'); });
+    setTimeout(ga('send', 'pageview'), 2000);
 </script>
 </body>
 </html>

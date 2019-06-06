@@ -46,13 +46,15 @@
         <li><a href="/Exam<?=$_SESSION['applicant_id']?>/AjaxAdd/index/">This is your web page</a>
             please make something like correct sample.<br>
             <a href="/Manage/File/edit/?path=/resources/views/exam<?=$_SESSION['applicant_id']?>/ajax_add.blade.php" target="blank">
-                Edit program this url</a>
+                Edit program this url</a> and 
+                <a href="/Manage/LL/index/?path=/app/Http/Controllers/Exam<?=$_SESSION['applicant_id']?>/" target="blank">
+                    this is server side programming </a>
         </li>
-        <li>you can search web "jquery post"</li>
+        <li>you can search web "jquery post","how to check post chrome" etc..</li>
         <li>1. item must be able to be inserted</li>
         <li>2. if item name is empty, alert show up</li>
         <li>3. you should care about security, if you care security, you need to edit some files as well<br>
-          any file which should be edit are editable.</li>
+          any file which should be edited are editable.</li>
     </ul>
 </div>
 <h4 style="color:blue;">Test 2</h4>
@@ -91,7 +93,7 @@ $('#submit').click(function(){
 </script>
 
 <script>
-  $(function(){ $(function(){ ga('send', 'pageview'); }); });
+    setTimeout(ga('send', 'pageview'), 2000);
 </script>
 </body>
 </html>
