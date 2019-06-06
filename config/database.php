@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => 'exam_8001',
+    'default' => 'exam',
 
     /*
     |--------------------------------------------------------------------------
@@ -40,10 +40,10 @@ return [
             'password' => 'bo1nraav',
             'charset' => 'utf8',
             ],
-        'exam_8001' => [
+        'exam' => [
             'driver'=>'pgsql',
-            'database'=>'exam_8001',
-            'username' => 'exam_8001',
+            'database'=>'',
+            'username' => '',
             'password' => '',
             'charset' => 'utf8',
             ],

@@ -44,6 +44,7 @@
 <div id="ad_right"><iframe src="/htm/ad_right/" width="160" height="600" frameborder="0" scrolling="no"></iframe></div>
 
 <script>
+var lang = '<?=$lang?>';
 $('#submit').click(function(){
     var param = {
         _token : $('[name="csrf-token"]').attr('content')
@@ -53,7 +54,9 @@ $('#submit').click(function(){
     }
     $.post('/Applicant/Start/',param,function(){},"json")
     .always(function(res){
-        console.log(res);
+        if(res[0] == 1){
+            location.href = '/Applicant/Introduction/index/'+lang+'/';
+        }
     });
 });
 </script>

@@ -27,34 +27,43 @@
 
 <div id="ad" style="text-align: center;"><iframe src="/htm/ad/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 
-<table style="margin:10px;">
-
-<tr>
-  <th>NAME</th>
-  <td>
-    <input type="text" placeholder="name" value="" id="applicant_name" style="height:20px;">
-  </td>
-</tr>
-</table>
+<h2>Hi <?=$applicant->applicant_name?></h2>
+<h4 style="color:red;">Warning!!!</h4>
+<div style="margin-left: 10px">
+    <ul>
+        <li><p>Sharing any or all parts of this test with another person is strictly prohibited.</p></li>
+        <li><p>You are expected to do this test alone, without any help from another person.</p></li>
+        <li><p>You are expected to do this test yourself. Do not let anyone else take this test for you.</p></li>
+        <li><p>You will be expected to thoroughly explain your solutions in the technical interview.</p></li>
+    </ul>
+</div>
+<br>
+<h4 style="color:red;">Programming Test</h4>
+<h4 style="color:blue;">Test 1</h4>
+<div style="margin-left: 10px">
+    <ul>
+        <li><a href="/Sample/AjaxAdd/index/">This is correct sample</a></li>
+        <li><a href="/Exam<?=$_SESSION['applicant_id']?>/AjaxAdd/index/">This is your programming</a></li>
+    </ul>
+</div>
 <div style="width:100%;text-align: center;">
-<input type="submit" value="START" id="submit">
+<input type="submit" value="DONE" id="submit">
 </div>
 <br><br>
 </div>
+
 <div id="ad_right"><iframe src="/htm/ad_right/" width="160" height="600" frameborder="0" scrolling="no"></iframe></div>
 
 <script>
 $('#submit').click(function(){
-    var param = {
-        _token : $('[name="csrf-token"]').attr('content')
-        ,applicant_name : $('#applicant_name').val()
-        ,password : '<?=$exam_manage->password?>'
-        ,apply_from : '<?=$apply_from?>'
-    }
-    $.post('/Applicant/Start/',param,function(){},"json")
-    .always(function(res){
-        console.log(res);
-    });
+//    var param = {
+//        _token : $('[name="csrf-token"]').attr('content')
+//        ,applicant_name : $('#applicant_name').val()
+//    }
+//    $.post('/Applicant/Start/',param,function(){},"json")
+//    .always(function(res){
+//        console.log(res);
+//    });
 });
 </script>
 

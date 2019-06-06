@@ -6,15 +6,20 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\Request;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     public function __construct()
     {
-        \Config::set('database.connections.exam_8001.database', 'exam_8001');
-        \Config::set('database.connections.exam_8001.username', 'exam_8001');
-        \Config::set('database.connections.exam_8001.password', 's2e4tuz1');
-        
+        if ( isset($_SESSION['applicant_id']) ) {
+            \Config::set('database.connections.exam.database', 'exam_'.$_SESSION['applicant_id'] ?? '');
+            \Config::set('database.connections.exam.username', 'exam_'.$_SESSION['applicant_id'] ?? '');
+            \Config::set('database.connections.exam.password', $_SESSION['db_password'] ?? '');
+        } else if ( !isset($_SESSION) ) {
+            session_set_cookie_params(3600 * 24 * 7);
+            session_start(); 
+        }
     }
 }
