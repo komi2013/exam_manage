@@ -48,14 +48,16 @@
 </table>
 
 <br>
-<input type="text" placeholder="item name" id="item_name" value="<?=$date?>">
+<input type="text" placeholder="date" id="date" value="<?=$date?>">
 <input type="submit" value="submit" id="submit">
+<br><br><br><br>
 </div>
+
 <div id="ad_right"><iframe src="/htm/ad_right/" width="160" height="600" frameborder="0" scrolling="no"></iframe></div>
 
 <script>
 $('#submit').click(function(){
-    location.href = '/Sample/Join/index/'+ $('#item_name').val() +'/';
+    location.href = '/Sample/Join/index/?date='+ $('#date').val();
 });
 </script>
 

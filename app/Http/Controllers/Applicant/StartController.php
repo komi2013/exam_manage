@@ -53,8 +53,4 @@ class StartController extends Controller {
         }
         echo json_encode($res);
     }
-    public function lessuri(Request $request) {
-        $request->session()->regenerateToken();
-        
-    }
 }

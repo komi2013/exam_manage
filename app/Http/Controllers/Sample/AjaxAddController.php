@@ -9,7 +9,7 @@ class AjaxAddController extends Controller {
 
     public function index(Request $request) {
         
-        $obj = DB::table('t_item')->orderBy('item_id','desc')->limit(2)->get();
+        $obj = DB::table('t_item')->orderBy('item_id','desc')->limit(5)->get();
         
         return view('sample.ajax_add', compact('obj'));
     }

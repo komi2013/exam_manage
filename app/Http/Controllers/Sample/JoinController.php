@@ -9,9 +9,8 @@ use Carbon\Carbon;
 
 class JoinController extends Controller {
 
-    public function index(Request $request, $directory=null, $controller=null, 
-            $action=null, $date='2019-05-27') {
-        
+    public function index(Request $request) {
+        $date = $request->input('date') ?? '2019-05-30';
         $obj = DB::table('t_item')->whereDate('created_at', '=', $date)->get();
         $arr_category_ids = [];
         $item = [];

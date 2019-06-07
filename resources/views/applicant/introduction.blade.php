@@ -39,11 +39,39 @@
 </div>
 <br>
 <h4 style="color:red;">Programming Test</h4>
+<h4 style="color:blue;">Environment</h4>
+<table style="margin:10px;">
+    <tr><th colspan="2" style="text-align: left;">
+            <a href="/adminer-en.php?pgsql=localhost" target="blank">
+            You can check database from this url</a><br>
+        you can change DB as you like, if you think it is necessary.<br>
+        something like adding index and so on.
+        </th></tr>
+<tr>
+  <th>System</th><td>PostgreSQL</td>
+</tr>
+<tr>
+  <th>Username</th><td>exam_<?=$_SESSION['applicant_id']?></td>
+</tr>
+<tr>
+  <th>Password</th><td><?=$_SESSION['db_password']?></td>
+</tr>
+<tr>
+  <th>Database</th><td>exam_<?=$_SESSION['applicant_id']?></td>
+</tr>
+    <tr><th colspan="2" style="text-align: left;"><br>
+            <a href="/Manage/LL/index/?path=/" target="blank">
+            You can browse source code files from this url</a><br>
+        you can change whatever you want if you think it is necessary.<br>
+        but some files which should not be seen are not seeable.
+        </th></tr>
+</table>
+
 <h4 style="color:blue;">Test 1</h4>
 <div style="margin-left: 10px">
     <ul>
-        <li><a href="/Sample/AjaxAdd/index/">This is correct web page</a> You can submit item name</li>
-        <li><a href="/Exam<?=$_SESSION['applicant_id']?>/AjaxAdd/index/">This is your web page</a>
+        <li><a href="/Sample/AjaxAdd/index/" target="blank">This is correct web page</a> You can submit item name</li>
+        <li><a href="/Exam<?=$_SESSION['applicant_id']?>/AjaxAdd/index/" target="blank">This is your web page</a>
             please make something like correct sample.<br>
             <a href="/Manage/File/edit/?path=/resources/views/exam<?=$_SESSION['applicant_id']?>/ajax_add.blade.php" target="blank">
                 Edit program this url</a> and 
@@ -60,36 +88,25 @@
 <h4 style="color:blue;">Test 2</h4>
 <div style="margin-left: 10px">
     <ul>
-        <li><a href="/Sample/Join/index/2019-05-30/">This is correct web page</a> You can see item list</li>
-        <li><a href="/Exam<?=$_SESSION['applicant_id']?>/Join/index/2019-05-30/">This is your web page</a>
+        <li><a href="/Sample/Join/index/" target="blank">This is correct web page</a> You can see item list</li>
+        <li><a href="/Exam<?=$_SESSION['applicant_id']?>/Join/index/" target="blank">This is your web page</a>
             please make something like correct sample.<br>
             <a href="/Manage/File/edit/?path=/app/Http/Controllers/Exam<?=$_SESSION['applicant_id']?>/JoinController.php" target="blank">
                 Edit program this url</a>
         </li>
         <li>1. you need to show item list</li>
-        <li>2. you should care about performance, if you care performance, you need to edit DB index as well<br>
+        <li>2. you should care about performance. <br>
           m_category, t_item table's record supposed to be 1 million records</li>
     </ul>
 </div>
-<div style="width:100%;text-align: center;">
-<input type="submit" value="DONE" id="submit">
-</div>
+
 <br><br>
 </div>
 
 <div id="ad_right"><iframe src="/htm/ad_right/" width="160" height="600" frameborder="0" scrolling="no"></iframe></div>
 
 <script>
-$('#submit').click(function(){
-    var param = {
-        _token : $('[name="csrf-token"]').attr('content')
-//        ,applicant_name : $('#applicant_name').val()
-    }
-    $.post('/Applicant/Done/',param,function(){},"json")
-    .always(function(res){
-        console.log(res);
-    });
-});
+
 </script>
 
 <script>

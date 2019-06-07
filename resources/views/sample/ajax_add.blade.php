@@ -48,13 +48,19 @@
 
 <script>
 $('#submit').click(function(){
+    if(!$('#item_name').val()){
+        alert('item name is empty');
+        return;
+    }
     var param = {
         _token : $('[name="csrf-token"]').attr('content')
         ,item_name : $('#item_name').val()
     }
     $.post('/Sample/AddItem/',param,function(){},"json")
     .always(function(res){
-        console.log(res);
+        if(res[0] == 1){
+            location.href = '';
+        }
     });
 });
 </script>
