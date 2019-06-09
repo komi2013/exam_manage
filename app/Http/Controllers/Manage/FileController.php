@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\DB;
 class FileController extends Controller {
 
     public function edit(Request $request) {
-        $request->path;
 
         $viewable = true;
         if (
@@ -18,6 +17,52 @@ class FileController extends Controller {
                 strpos($request->path, 'config/database.php')
                 ) {
             return view('errors.404');
+        }
+        if (!isset($_SESSION['applicant_id']) AND 
+                strpos($request->path, '/Sample/')) {
+            return view('errors.404');
+        }
+        if (strpos($request->path, 'app/Http/Controllers/Exam8')) {
+            $applicant_id = substr($request->path, 26, 4);
+            $ok = false;
+            if (session('manager_id')) {
+                $obj = DB::connection('exam_manage')->table('t_applicant')
+                        ->where('manager_id',session('manager_id'))
+                        ->get();
+                foreach ($obj as $k => $d) {
+                    if ($d->applicant_id == $applicant_id) {
+                        $ok = true;
+                    }
+                }
+            } else if (isset($_SESSION['applicant_id'])) {
+                if ($_SESSION['applicant_id'] == $applicant_id) {
+                    $ok = true;
+                }     
+            }
+            if (!$ok) {
+                return view('errors.404');
+            }
+        }
+        if (strpos($request->path, 'resources/views/exam8')) {
+            $applicant_id = substr($request->path, 21, 4);
+            $ok = false;
+            if (session('manager_id')) {
+                $obj = DB::connection('exam_manage')->table('t_applicant')
+                        ->where('manager_id',session('manager_id'))
+                        ->get();
+                foreach ($obj as $k => $d) {
+                    if ($d->applicant_id == $applicant_id) {
+                        $ok = true;
+                    }
+                }
+            } else if (isset($_SESSION['applicant_id'])) {
+                if ($_SESSION['applicant_id'] == $applicant_id) {
+                    $ok = true;
+                }     
+            }
+            if (!$ok) {
+                return view('errors.404');
+            }
         }
         $data = file_get_contents(base_path().$request->path);
         $path = $request->path;

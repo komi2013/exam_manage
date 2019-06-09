@@ -14,7 +14,7 @@ class ApplicantController extends Controller {
         if(!$manager_id){
             return redirect('/Manage/Auth/index/');
         }
-        $obj = DB::table('t_applicant')
+        $obj = DB::connection('exam_manage')->table('t_applicant')
                 ->where('manager_id',$manager_id)
                 ->get();
 

@@ -42,14 +42,14 @@ class GpcallbackController extends Controller {
 //  +"access_type": "online"
         
 
-        $obj = DB::table('t_manager')
+        $obj = DB::connection('exam_manage')->table('t_manager')
                 ->where('oauth_type',1)->where('oauth_id',$contents->user_id)
                 ->first();
         if (isset($obj->manager_id)) {
             $manager_id = $obj->manager_id;
         } else {
             $manager_id = DB::select("select nextval('t_manager_manager_id_seq')")[0]->nextval;
-            DB::table('t_manager')->insert([
+            DB::connection('exam_manage')->table('t_manager')->insert([
                 "manager_id" => $manager_id
                 ,"oauth_type" => 1
                 ,"oauth_id" => $contents->user_id

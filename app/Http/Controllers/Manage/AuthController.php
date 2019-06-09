@@ -25,8 +25,8 @@ class AuthController extends Controller {
         
 //        dd($_SESSION['db']);
 //        \Config::set('database.default', 'exam_manage');
-                $obj = DB::table('t_applicant')
-                ->get();
+//                $obj = DB::connection('exam_manage')->table('t_applicant')
+//                ->get();
         
         return view('manage.auth', compact('fb_url','gp_url','lang'));
     }

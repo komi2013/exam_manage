@@ -24,14 +24,14 @@ class FboauthController extends Controller {
 //  +"name": "Seigi Komatsu"
 //  +"id": "10216221617110572"
 
-        $obj = DB::table('t_manager')
+        $obj = DB::connection('exam_manage')->table('t_manager')
                 ->where('oauth_type',2)->where('oauth_id',$contents->id)
                 ->first();
         if (isset($obj->manager_id)) {
             $manager_id = $obj->manager_id;
         } else {
             $manager_id = DB::select("select nextval('t_manager_manager_id_seq')")[0]->nextval;
-            DB::table('t_manager')->insert([
+            DB::connection('exam_manage')->table('t_manager')->insert([
                 "manager_id" => $manager_id
                 ,"oauth_type" => 2
                 ,"oauth_id" => $contents->id
