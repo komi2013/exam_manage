@@ -27,8 +27,8 @@
 
 <div id="ad" style="text-align: center;"><iframe src="/htm/ad/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 
-<h1>404 Not Found</h1>
-
+<h1>Page Not Found</h1>
+<p><?=$message ?? '' ?></p>
 </div>
 <div id="ad_right"><iframe src="/htm/ad_right/" width="160" height="600" frameborder="0" scrolling="no"></iframe></div>
 

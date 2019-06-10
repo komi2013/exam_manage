@@ -10,15 +10,12 @@ class StartController extends Controller {
 
     public function index(Request $request, $directory=null, $controller=null, 
             $action=null, $password='', $lang='en', $apply_from='') {
-//DB::statement("ALTER USER exam_8001 password 's2e4tuz1';");
-//die('he we go');
-
         $exam_manage = DB::connection('exam_manage')->table('t_manager')
                 ->where('password',$password)->first();
         if (!$exam_manage) {
             return view('errors.404');
         }
-        return view('applicant.start', compact('apply_from','exam_manage','lang'));
+        return view('applicant.start', compact('exam_manage','lang','apply_from'));
     }
     public function lessuri(Request $request) {
         $request->session()->regenerateToken();

@@ -9,6 +9,7 @@
 
     <script src="/plugin/jquery-3.4.0.min.js"></script>
     <script src="/plugin/jquery.cookie.js"></script>
+    <script src="/plugin/vue.min.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-57298122-3"></script>
     <script src="/js/analytics.js<?=config('my.cache_v')?>"></script>
     <link rel="stylesheet" type="text/css" href="/css/basic.css<?=config('my.cache_v')?>" />
@@ -26,8 +27,49 @@
 <div id="content">
 
 <div id="ad" style="text-align: center;"><iframe src="/htm/ad/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
+<table style="margin:10px;">
+<tr>
+  <th>Manager Name</th>
+  <td>
+    <?=$manager->manager_name?>
+  </td>
+</tr>
+<tr>
+  <th>Login Type</th>
+  <td>
+    <img src="<?=$login_icon?>" class="icon">
+  </td>
+</tr>
+</table>
+<h3><a v-bind:href="'/Applicant/Start/index/'+uri" target="blank">Start Examination URL</a></h3>
 
+<div>
+    <textarea style="width:100%;height:50px;">
+<?='https://'.$_SERVER['HTTP_HOST']?>@{{'/Applicant/Start/index/'+uri}}
+    </textarea>
+</div>
+<table>
+    <tr>
+      <th><input value=" password change " type="submit" id="pass"> : </th>
+      <td><input type="textbox" v-model="password"></td>
+    </tr>
+    <tr>
+    <th>language : </th>
+    <td>
+        <select v-model="lang">
+        <option>en</option>
+        <option>ja</option>
+        </select>
+    </td>
+    </tr>
+    <tr>
+        <th>what is website : </th>
+        <td><input type="textbox" placeholder="indeed" v-model="from"></td>
+    </tr>
+</table>
 
+<br>
+<h3>APPLICANT</h3>
 <?php foreach ($obj as $d) {?>
 <table style="margin:10px;">
 <tr>
@@ -39,7 +81,7 @@
 <tr>
   <th>NAME</th>
   <td>
-    <input type="text" value="<?=$d->applicant_name?>">
+    <?=$d->applicant_name?>
   </td>
 </tr>
 <tr>
@@ -51,17 +93,39 @@
 <tr>
   <th>deadline</th>
   <td>
-    <input type="date" value="<?=$d->deadline?>">
+    <?=$d->deadline?>
+  </td>
+</tr>
+<tr>
+  <td><a href="/Manage/LL/index/?path=/app/Http/Controllers/Exam<?=$d->applicant_id?>/"
+         target="blank">Check Controllers</a></td>
+  <td><a href="/Manage/LL/index/?path=/resources/views/exam<?=$d->applicant_id?>/"
+         target="blank">Check Views</a>
   </td>
 </tr>
 </table>
 <?php } ?>
 
-
 </div>
+
 <div id="ad_right"><iframe src="/htm/ad_right/" width="160" height="600" frameborder="0" scrolling="no"></iframe></div>
 
 <script>
+var c = new Vue({
+  el: '#content',
+  data: {
+//      uri:this.password+'/'+this.lang+'/'+this.from+'/'
+      password:'<?=$manager->password?>'
+      ,lang:'en'
+      ,from:''
+  },
+  computed: {
+      uri() {
+          return this.password+'/'+this.lang+'/'+this.from+'/';
+      }
+  },
+});
+
 $('#submit').click(function(){
     var param = {
         _token : $('[name="csrf-token"]').attr('content')
@@ -72,10 +136,22 @@ $('#submit').click(function(){
         console.log(res);
     });
 });
-</script>
 
-<script>
-    setTimeout(ga('send', 'pageview'), 2000);
+$('#pass').click(function(){
+    c.password = Math.random().toString(32).substring(2);
+    var param = {
+        _token : $('[name="csrf-token"]').attr('content')
+        ,password : c.password
+    }
+    $.post('/Manage/Password/',param,function(){},"json")
+    .always(function(res){
+        if(res[0] == 1){
+            location.href = '';
+        }
+    });
+});
+
+setTimeout(function(){ga('send', 'pageview')},2000);
 </script>
 </body>
 </html>
