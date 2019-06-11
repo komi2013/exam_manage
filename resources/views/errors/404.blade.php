@@ -39,7 +39,7 @@ $('#submit').click(function(){
 </script>
 
 <script>
-    setTimeout(ga('send', 'pageview'), 2000);
+    setTimeout(function(){ga('send', 'pageview')},2000);
 </script>
 </body>
 </html>

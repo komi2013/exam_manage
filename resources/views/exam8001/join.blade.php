@@ -31,7 +31,7 @@
 <div id="ad_right"><iframe src="/htm/ad_right/" width="160" height="600" frameborder="0" scrolling="no"></iframe></div>
 
 <script>
-    setTimeout(ga('send', 'pageview'), 2000);
+    setTimeout(function(){ga('send', 'pageview')},2000);
 </script>
 </body>
 </html>
