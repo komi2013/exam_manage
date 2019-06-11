@@ -9,7 +9,7 @@ use Carbon\Carbon;
 class IntroductionController extends Controller {
 
     public function index(Request $request, $directory=null, $controller=null, 
-            $action=null, $lang='', $apply_from='') {
+            $action=null, $lang='en') {
         
         if (!isset($_SESSION['applicant_id'])) {
             $message = 'please go to start URL';
@@ -22,6 +22,6 @@ class IntroductionController extends Controller {
         if (!$applicant) {
             return view('errors.404');
         }
-        return view('applicant.introduction', compact('applicant'));
+        return view('applicant.introduction_'.$lang, compact('applicant'));
     }
 }
