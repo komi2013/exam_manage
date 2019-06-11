@@ -1,3 +1,4 @@
+<?php if(config('my.middle')) {?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -19,3 +20,4 @@
 
 </body>
 </html>
+<?php } ?>

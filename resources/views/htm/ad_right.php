@@ -1,3 +1,4 @@
+<?php if(config('my.left')) {?>
 <?php sleep(2); ?>
 <!DOCTYPE html>
 <html>
@@ -19,3 +20,4 @@
   </script>
 </body>
 </html>
+<?php } ?>

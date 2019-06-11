@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'Salon\TopController@index');
+Route::view('/', 'htm/top');
 
 Route::get('/htm/{page}', 'HtmController@index');
 

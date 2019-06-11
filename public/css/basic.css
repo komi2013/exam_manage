@@ -26,10 +26,10 @@ h1 {
   vertical-align: middle;
   cursor: pointer;
 }
-#drawer td {
+/*#drawer td {
   background-color: #EEEEEE;
   height: 50px;
-}
+}*/
 
 .td_15{
   width: 15%;

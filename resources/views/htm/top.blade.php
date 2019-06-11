@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>login</title>
+    <title>プログラミングテスト採用支援ツール（無料）</title>
     <meta name="google-site-verification" content="" />
 
     <link rel="shortcut icon" href="" />
@@ -26,32 +26,9 @@
 <div id="content">
 
 <div id="ad" style="text-align: center;"><iframe src="/htm/ad/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
-<p>Oauth Login</p>
-    <div style="margin:20px;display: inline-block;">
-    <a href="<?=$fb_url?>">
-        <img src="/img/icon/fb.jpg" class="icon">
-    </a>
-    </div>
-<!--    <div style="margin:20px;display: inline-block;">
-    <a href="/Manage/Twoauth/">
-        <img src="/img/icon/tw.jpg" class="icon">
-    </a>
-    </div>-->
-    <div style="margin:20px;display: inline-block;">
-    <a href="<?=$gp_url?>">
-        <img src="/img/icon/gp.png" class="icon">
-    </a>
-    </div>
 
-<?= include(base_path('resources/lang/'.$lang.'/privacy.php')); ?>
 </div>
 <div id="ad_right"><iframe src="/htm/ad_right/" width="160" height="600" frameborder="0" scrolling="no"></iframe></div>
-
-<script>
-$('#submit').click(function(){
-    location.href = '/Sample/Join/index/'+ $('#item_name').val() +'/';
-});
-</script>
 
 <script>
     setTimeout(function(){ga('send', 'pageview')},2000);
