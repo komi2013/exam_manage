@@ -13,6 +13,7 @@ class FileController extends Controller {
         if (
                 strpos($request->path, '/Manage/') OR 
                 strpos($request->path, '/Applicant/') OR
+                strpos($request->path, '/Rollback') OR
                 strpos($request->path, '.env') OR 
                 strpos($request->path, 'config/database.php')
                 ) {
