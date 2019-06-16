@@ -42,15 +42,45 @@
         <img src="/img/icon/gp.png" class="icon">
     </a>
     </div>
-
+<br>
+<div style="margin:20px;display: inline-block;">
+    <input type="text" placeholder="email" id="email" style="height:30px;"><br>
+    <input type="text" placeholder="password" id="manager_pass" style="height:30px;"><br>
+    <input type="submit" value="login" id="login" style="padding:10px;">
+    <input type="submit" value="reissue passowrd" class="send_mail" style="padding:10px;">
+</div>
+<br>
+<div style="margin:20px;display: inline-block;">
+    <input type="submit" value="register" class="send_mail" style="padding:10px;">
+</div>
 <?= include(base_path('resources/lang/'.$lang.'/privacy.php')); ?>
 </div>
 <div id="ad_right"><iframe src="/htm/ad_right/" width="160" height="600" frameborder="0" scrolling="no"></iframe></div>
 
 <script>
-$('#submit').click(function(){
-    location.href = '/Sample/Join/index/'+ $('#item_name').val() +'/';
+$('.send_mail').click(function(){
+    var param = {
+        _token : $('[name="csrf-token"]').attr('content')
+        ,email : $('#email').val()
+        ,manager_pass : $('#manager_pass').val()
+    }
+    $.post('/Manage/Email/',param,function(){},"json")
+    .always(function(res){
+        console.log(res);
+    });
 });
+$('#login').click(function(){
+    var param = {
+        _token : $('[name="csrf-token"]').attr('content')
+        ,email : $('#email').val()
+        ,manager_pass : $('#manager_pass').val()
+    }
+    $.post('/Manage/Email/login/',param,function(){},"json")
+    .always(function(res){
+        console.log(res);
+    });
+});
+
 </script>
 
 <script>

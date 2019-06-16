@@ -22,35 +22,7 @@ class Rollback extends Command
 
 
     public function handle() {
-//            \Config::set('database.connections.exam.database', "exam_manage");
-//            \Config::set('database.connections.exam.username', 'postgres');
-//            \Config::set('database.connections.exam.password', 'sde5tuft');
-//        for ($i = 8011; $i <= 8013; $i++) {
-//            $result = DB::statement(
-//                    "CREATE ROLE exam_".$i." WITH LOGIN PASSWORD 'password';");
-//            $result = DB::statement(
-//                    "CREATE DATABASE exam_".$i." WITH TEMPLATE exam_8003 OWNER exam_".$i.";");
-//            
-//            $conn = "host=localhost dbname=exam_".$i.
-//                    " user=postgres".
-//                    " password=sde5tuft";
-//            $link = pg_connect($conn);
-//            $result = pg_query("GRANT ALL ON ALL TABLES IN SCHEMA public TO exam_".$i.";");
-//            $result = pg_query("ALTER TABLE public.t_item OWNER TO exam_".$i.";");
-//            $result = pg_query("ALTER TABLE public.m_category OWNER TO exam_".$i.";");
-//            pg_close($link);
-//            DB::table('t_applicant')->insert([
-//                "db_password" => 'password'
-//                ,"manager_id" => 1
-//                ,"deadline" => '2019-01-01'
-//                ,"applicant_id" => $i
-//            ]);
-//        }
-//        dd($result);
-//        echo base_path()."/infra/rollback.sh ".'8002';
-//        shell_exec(base_path()."/infra/rollback.sh ".'8002');
-//        
-//        die;
+
         $applicants = DB::connection('exam_manage')
                 ->table('t_applicant')
                 ->where('deadline','<',now())

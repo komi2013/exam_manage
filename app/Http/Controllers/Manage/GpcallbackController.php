@@ -31,8 +31,10 @@ class GpcallbackController extends Controller {
           curl_close($curl);
         }
         $output = json_decode($output);
-        $contents = file_get_contents('https://www.googleapis.com/oauth2/v1/tokeninfo?access_token='.$output->access_token);
+        $contents = file_get_contents('https://www.googleapis.com/oauth2/v1/tokeninfo?access_token='
+                .$output->access_token);
         $contents = json_decode($contents);
+
 //        dd($contents);
 //  +"issued_to": "1001190811901-sj2dd1vcledc4i8hfnb3qmrt63t7ubvi.apps.googleusercontent.com"
 //  +"audience": "1001190811901-sj2dd1vcledc4i8hfnb3qmrt63t7ubvi.apps.googleusercontent.com"
@@ -41,9 +43,23 @@ class GpcallbackController extends Controller {
 //  +"expires_in": 3599
 //  +"access_type": "online"
         
-
+        $post_data = array('access_token' => $output->access_token);
+        $res = file_get_contents('https://www.googleapis.com/oauth2/v1/userinfo' . '?' . http_build_query($post_data));
+        $result = json_decode($res, true);
+//dd($result);
+//array:9 [▼
+//  "id" => "101648555248376672193"
+//  "email" => "seijirok@gmail.com"
+//  "verified_email" => true
+//  "name" => "Sei Komi"
+//  "given_name" => "Sei"
+//  "family_name" => "Komi"
+//  "link" => "https://plus.google.com/101648555248376672193"
+//  "picture" => "https://lh4.googleusercontent.com/-8trcwIgCqo4/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rdNRGcFAYUMhg0H8wwnGgFT-2TdlA/mo/photo.jpg"
+//  "locale" => "ja"
+//]
         $obj = DB::connection('exam_manage')->table('t_manager')
-                ->where('oauth_type',1)->where('oauth_id',$contents->user_id)
+                ->where('oauth_type',1)->where('oauth_id',$result['id'])
                 ->first();
         if (isset($obj->manager_id)) {
             $manager_id = $obj->manager_id;
@@ -52,8 +68,9 @@ class GpcallbackController extends Controller {
             DB::connection('exam_manage')->table('t_manager')->insert([
                 "manager_id" => $manager_id
                 ,"oauth_type" => 1
-                ,"oauth_id" => $contents->user_id
+                ,"oauth_id" => $result['id']
                 ,"updated_at" => now()
+                ,"manager_name" => $result['family_name']
             ]);
         }
         $request->session()->put('manager_id', $manager_id);

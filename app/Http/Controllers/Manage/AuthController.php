@@ -19,15 +19,11 @@ class AuthController extends Controller {
         $gp_url = 'https://accounts.google.com/o/oauth2/auth'
           .'?client_id=1001190811901-sj2dd1vcledc4i8hfnb3qmrt63t7ubvi.apps.googleusercontent.com'
           .'&response_type=code'
-          .'&scope=openid'
+//          .'&scope=https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email'
+          .'&scope=https://www.googleapis.com/auth/userinfo.profile'
           .'&redirect_uri=https://'.$_SERVER['HTTP_HOST'].'/Manage/Gpcallback/'
           ;
-        
-//        dd($_SESSION['db']);
-//        \Config::set('database.default', 'exam_manage');
-//                $obj = DB::connection('exam_manage')->table('t_applicant')
-//                ->get();
-        
+
         return view('manage.auth', compact('fb_url','gp_url','lang'));
     }
 
