@@ -67,6 +67,11 @@ $('.send_mail').click(function(){
     $.post('/Manage/Email/',param,function(){},"json")
     .always(function(res){
         console.log(res);
+        if(res[0] == 1){
+            alert('mail sent');
+        }else{
+            alert('failed');
+        }
     });
 });
 $('#login').click(function(){
@@ -77,7 +82,11 @@ $('#login').click(function(){
     }
     $.post('/Manage/Email/login/',param,function(){},"json")
     .always(function(res){
-        console.log(res);
+        if(res[0] == 1){
+            location.href = '/Manage/Applicant/index/';
+        }else{
+            alert('failed');
+        }
     });
 });
 

@@ -19,21 +19,12 @@ class EmailController extends Controller {
         $message = "Please Verify Your Email\r\n"
                 ."https://exam-manage.quigen.info/Manage/Email/auth/"
                 . $auth ."/ \r\n"
-                . "new password : ".$request->password." \r\n"
+                . "new password : ".$request->manager_pass." \r\n"
                 ;
         $headers = "From: noreply@exam-manage.quigen.info";
         $res[0] = 1;
-$to='seijiro.komatsu@shopairlines.com';      //<-- 宛先アドレス
-$subject='TEST MAIL';
-$message='THIS IS TEST';
-        $res[1] = mail($to, $subject, $message);
-$to = 'komatsuka@yahoo.com';
-$title = '件名';
-$message = '本文';
-$header = 'From: 送信元@example.jp';
-mb_send_mail($to, $title, $message, $header, '-f' . '送信元@example.jp');
+        $res[1] = mail($to, $subject, $message, $headers);
         echo json_encode($res);
-//        return redirect('/Manage/Applicant/index/');
     }
     public function auth(Request $request, $directory=null, $controller=null, 
             $action=null, $auth) {
@@ -44,13 +35,14 @@ mb_send_mail($to, $title, $message, $header, '-f' . '送信元@example.jp');
         $obj = DB::connection('exam_manage')->table('t_manager')
             ->where('email',session('email'))
             ->first();
-        if ($obj->manager_id AND $obj->oauth_type == 3) {
+        if (isset($obj->manager_id) AND $obj->oauth_type == 3) {
             DB::connection('exam_manage')->table('t_manager')
                     ->where("manager_id",$obj->manager_id)
                     ->update([
                         "manager_pass" => session('manager_pass')
                         ,"updated_at" => now()
                     ]);
+            $manager_id = $obj->manager_id;
         } else {
             $manager_id = DB::connection('exam_manage')
                     ->select("select nextval('t_manager_manager_id_seq')")[0]->nextval;
@@ -58,6 +50,7 @@ mb_send_mail($to, $title, $message, $header, '-f' . '送信元@example.jp');
                 "manager_id" => $manager_id
                 ,"oauth_type" => 3
                 ,"updated_at" => now()
+                ,"email" => session('email')
                 ,"manager_pass" => session('manager_pass')
             ]);                
         }
