@@ -22,11 +22,16 @@ class Rollback extends Command
 
 
     public function handle() {
+        
+//        for ($i = 8016; $i < 9000; $i++) {
+//            $result = pg_query("CREATE USER exam_".$i." WITH PASSWORD '12345678';");
+//        }
 
         $applicants = DB::connection('exam_manage')
                 ->table('t_applicant')
                 ->where('deadline','<',now())
                 ->where('manager_id','<>',0)
+                ->where('applicant_id','<>',8001)
                 ->orderBy('applicant_id')
                 ->get();
         foreach ($applicants as $d) {
