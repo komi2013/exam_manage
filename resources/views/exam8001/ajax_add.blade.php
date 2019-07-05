@@ -47,7 +47,17 @@
 <div id="ad_right"><iframe src="/htm/ad_right/" width="160" height="600" frameborder="0" scrolling="no"></iframe></div>
 
 <script>
-
+$('#submit').click(function(){
+    var param = {
+        test : 'test'
+    }
+    $.post('/Sample/AddItem/',param,function(){},"json")
+    .always(function(res){
+        if(res[0] == 1){
+            location.href = '';
+        }
+    });
+});
 </script>
 
 <script>
