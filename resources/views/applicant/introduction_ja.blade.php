@@ -77,6 +77,7 @@
                     これがサーバーサイドのプログラミングです </a>
         </li>
         <li>「jquery post」「chrome post　確認」でweb検索してもらえれば情報が取得できます</li>
+        <li> こちらがPOSTのURLです /Exam<?=$_SESSION['applicant_id']?>/AddItem/</li>
         <li>1. itemは登録される</li>
         <li>2. item nameが空の場合アラートを表示</li>
         <li>3. セキュリティを考慮した改修をお願いします<br>
