@@ -35,7 +35,8 @@ class FileController extends Controller {
                         $ok = true;
                     }
                 }
-            } else if (isset($_SESSION['applicant_id'])) {
+            }
+            if (isset($_SESSION['applicant_id'])) {
                 if ($_SESSION['applicant_id'] == $applicant_id) {
                     $ok = true;
                 }     
@@ -56,7 +57,8 @@ class FileController extends Controller {
                         $ok = true;
                     }
                 }
-            } else if (isset($_SESSION['applicant_id'])) {
+            }
+            if (isset($_SESSION['applicant_id'])) {
                 if ($_SESSION['applicant_id'] == $applicant_id) {
                     $ok = true;
                 }     

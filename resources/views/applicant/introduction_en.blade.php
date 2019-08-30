@@ -79,6 +79,7 @@
                     this is server side programming </a>
         </li>
         <li>you can search web "jquery post","how to check post chrome" etc..</li>
+        <li> this is your post URL /Exam<?=$_SESSION['applicant_id']?>/AddItem/</li>
         <li>1. item must be able to be inserted</li>
         <li>2. if item name is empty, alert show up</li>
         <li>3. you should care about security, if you care security, you need to edit some files as well<br>
