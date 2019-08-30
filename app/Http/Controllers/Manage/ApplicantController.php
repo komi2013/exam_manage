@@ -9,12 +9,14 @@ class ApplicantController extends Controller {
 
     public function index(Request $request, $directory=null, $controller=null, 
             $action=null) {
+
         $manager_id = $request->session()->get('manager_id');
         if(!$manager_id){
             return redirect('/Manage/Auth/index/');
         }
         $obj = DB::connection('exam_manage')->table('t_applicant')
                 ->where('manager_id',$manager_id)
+                ->orderBy('deadline','desc')
                 ->get();
         $manager = DB::connection('exam_manage')->table('t_manager')
                 ->where('manager_id',$manager_id)

@@ -19,7 +19,8 @@ class Controller extends BaseController
             \Config::set('database.connections.exam.password', $_SESSION['db_password'] ?? '');
         } else if ( !isset($_SESSION) ) {
             session_set_cookie_params(3600 * 24 * 7);
-            session_start(); 
+            ini_set('session.gc_maxlifetime', 3600 * 24 * 7);
+            session_start();
         }
     }
 }

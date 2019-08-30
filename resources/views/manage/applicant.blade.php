@@ -71,7 +71,7 @@
 <br>
 <h3>APPLICANT</h3>
 <?php foreach ($obj as $d) {?>
-<table style="margin:10px;">
+<table style="margin:10px;border: 3px green solid;" >
 <tr>
   <th>ID</th>
   <td>
@@ -95,6 +95,10 @@
   <td>
     <?=$d->deadline?>
   </td>
+</tr>
+<tr>
+  <td><a href="/Exam<?=$d->applicant_id?>/AjaxAdd/index/" target="blank">Test 1</a></td>
+  <td><a href="/Exam<?=$d->applicant_id?>/Join/index/" target="blank">Test 2</a></td>
 </tr>
 <tr>
   <td><a href="/Manage/LL/index/?path=/app/Http/Controllers/Exam<?=$d->applicant_id?>/"

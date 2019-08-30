@@ -95,7 +95,8 @@
                 Edit program this url</a>
         </li>
         <li>1. you need to show item list</li>
-        <li>2. you should care about performance. <br>
+        <li>2. when exportability is 1, "OK". 2 is "???". when is 3, records must not show</li>
+        <li>3. you should care about performance. <br>
           m_category, t_item table's record supposed to be 1 million records</li>
     </ul>
 </div>
