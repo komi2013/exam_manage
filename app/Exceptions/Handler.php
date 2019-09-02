@@ -15,6 +15,7 @@ class Handler extends ExceptionHandler
      */
     protected $dontReport = [
         //
+//        NotFoundHttpException::class,
     ];
 
     /**
@@ -37,15 +38,17 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $e)
     {
-        $file = str_replace(base_path(), "", $e->getFile());
-        Log::error(
-            ($_SERVER['REQUEST_URI'] ?? "")
-                .' '. json_encode($_POST)
-                .' ['.$e->getCode().'] '.$e->getMessage()
-                .' on line '.$e->getLine()
-                .' of file '.$file
-            );
-
+        if ($e->getStatusCode() != 404) {
+            $file = str_replace(base_path(), "", $e->getFile());
+            Log::error(
+                ($_SERVER['REQUEST_URI'] ?? "")
+                    .' '. json_encode($_POST)
+                    .' ['.$e->getCode().'] '.$e->getMessage()
+                    .' on line '.$e->getLine()
+                    .' of file '.$file
+                );
+   
+        }
         //parent::report($exception);
     }
 
