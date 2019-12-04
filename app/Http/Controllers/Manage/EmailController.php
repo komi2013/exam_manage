@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Manage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use Weidner\Goutte\GoutteFacade;
 
 class EmailController extends Controller {
 
@@ -60,6 +59,7 @@ class EmailController extends Controller {
         return redirect('/Manage/Applicant/index/');
     }
     public function login(Request $request) {
+
         $obj = DB::connection('exam_manage')->table('t_manager')
             ->where('email',$request->email)
             ->first();
