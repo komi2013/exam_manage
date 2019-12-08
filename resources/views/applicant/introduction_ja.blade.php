@@ -95,7 +95,7 @@
             <a href="/Manage/File/edit/?path=/resources/views/exam<?=$_SESSION['applicant_id']?>/join.blade.php" target="blank">
                 このURLから編集お願いします</a>
         </li>
-        <li>1. 商品一覧の表示お願いします</li>
+        <li>1. 商品一覧の表示お願いします。テキストボックスに日付を入力して検索できるようにお願いします。</li>
         <li>2. exportabilityが1の時は「OK」、2の時は「???」、3の時はレコードそのものを非表示</li>
         <li>3. パフォーマンスを考慮したプログラミングでお願いします <br>
           m_category, t_item　のテーブルのレコード数が１００万件あることを想定</li>
