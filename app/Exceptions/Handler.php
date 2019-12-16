@@ -38,18 +38,18 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $e)
     {
-        if ($e->getStatusCode() != 404) {
-            $file = str_replace(base_path(), "", $e->getFile());
-            Log::error(
-                ($_SERVER['REQUEST_URI'] ?? "")
-                    .' '. json_encode($_POST)
-                    .' ['.$e->getCode().'] '.$e->getMessage()
-                    .' on line '.$e->getLine()
-                    .' of file '.$file
-                );
-   
-        }
-        //parent::report($exception);
+//        if ($e->getStatusCode() != 404) {
+//            $file = str_replace(base_path(), "", $e->getFile());
+//            Log::error(
+//                ($_SERVER['REQUEST_URI'] ?? "")
+//                    .' '. json_encode($_POST)
+//                    .' ['.$e->getCode().'] '.$e->getMessage()
+//                    .' on line '.$e->getLine()
+//                    .' of file '.$file
+//                );
+//   
+//        }
+        parent::report($e);
     }
 
     /**

@@ -73,7 +73,7 @@
 <?php foreach ($obj as $d) {?>
 <table style="margin:10px;border: 3px green solid;" >
 <tr>
-  <th>ID</th>
+  <th><a v-bind:href="'/Applicant/Introduction/index/'+this.lang+'/'">ID</a></th>
   <td>
     <?=$d->applicant_id?>
   </td>
@@ -96,17 +96,16 @@
     <?=$d->deadline?>
   </td>
 </tr>
+
 <tr>
-  <td><a href="/Exam<?=$d->applicant_id?>/AjaxAdd/index/" target="blank">Test 1</a></td>
-  <td><a href="/Exam<?=$d->applicant_id?>/Join/index/" target="blank">Test 2</a></td>
+  <td><a href="/manage/ApplicantSession/session_save/?applicant_id=<?=$d->applicant_id?>&goto=0" target="blank">Test 1</a></td>
+  <td><a href="/manage/ApplicantSession/session_save/?applicant_id=<?=$d->applicant_id?>&goto=1" target="blank">Test 2</a></td>
 </tr>
 <tr>
-  <td><a href="/Manage/LL/index/?path=/app/Http/Controllers/Exam<?=$d->applicant_id?>/"
-         target="blank">Check Controllers</a></td>
-  <td><a href="/Manage/LL/index/?path=/resources/views/exam<?=$d->applicant_id?>/"
-         target="blank">Check Views</a>
-  </td>
+  <td><a href="/manage/ApplicantSession/session_save/?applicant_id=<?=$d->applicant_id?>&goto=2" target="blank">Check Controllers</a></td>
+  <td><a href="/manage/ApplicantSession/session_save/?applicant_id=<?=$d->applicant_id?>&goto=3" target="blank">Check Views</a></td>
 </tr>
+
 </table>
 <?php } ?>
 
