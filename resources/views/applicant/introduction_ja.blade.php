@@ -68,25 +68,31 @@
 <h4 style="color:blue;">テスト１</h4>
 <div style="margin-left: 10px">
     <ul>
-        <li><a href="/Sample/AjaxAdd/index/" target="blank">正解のページ</a>item nameを登録できます</li>
-        <li><a href="/Exam<?=$_SESSION['applicant_id']?>/AjaxAdd/index/" target="blank">このページがテストページです</a>
-            正解のページのように変更お願いします<br>
-            <a href="/Manage/File/edit/?path=/resources/views/exam<?=$_SESSION['applicant_id']?>/ajax_add.blade.php" target="blank">
-                このURLから編集お願いします</a>　それと
-                <a href="/Manage/LL/index/?path=/app/Http/Controllers/Exam<?=$_SESSION['applicant_id']?>/" target="blank">
-                    これがサーバーサイドのプログラミングです </a>
+        <li>webページ上に（以下のURLのページに？）１から１００までの数字をphpを用いて出力してください。その数字が３で割り切れるとき、
+            ５で割り切れるとき、その両方で割り切れるときそれぞれで、Fizz、Buzz、FizzBuzzを数字の代わりに表示してみてください。
         </li>
-        <li>「jquery post」「chrome post　確認」でweb検索してもらえれば情報が取得できます</li>
-        <li> こちらがPOSTのURLです /Exam<?=$_SESSION['applicant_id']?>/AddItem/</li>
-        <li>1. itemは登録される</li>
-        <li>2. item nameが空の場合アラートを表示</li>
-        <li>3. セキュリティを考慮した改修をお願いします<br>
-          編集が必要なソースコードは編集可能にしています</li>
+        <li><a href="/Sample/AjaxAdd/fizzbuzz/" target="blank">正解のページ</a></li>
+        <li><a href="/Exam<?=$_SESSION['applicant_id']?>/AjaxAdd/fizzbuzz/" target="blank">このページがテストページです</a>
+            正解のページのように変更お願いします<br>
+            <a href="/Manage/File/edit/?path=/resources/views/exam<?=$_SESSION['applicant_id']?>/fizzbuzz.blade.php" target="blank">
+                このURLから編集お願いします</a>
+        </li>
     </ul>
 </div>
 <h4 style="color:blue;">テスト２</h4>
 <div style="margin-left: 10px">
     <ul>
+        <li>以下のページ？は商品の名前やその商品の状態を確認できるページです。
+            このページを業務で使用している人から改修依頼が届きました。改修要件は以下の内容でした。
+        </li>
+        <li>これらのデータがいつ生成されたのかを検索できるようにしてください。
+            いつ生成されたのか、はcreated_atに格納されています。
+            また、必要なデータは２つのテーブルに分かれています。うまく結合して表示させる必要があります。
+        </li>
+        <li>exportabilityはDB上で1、2、 3の３種類が格納されています。
+            1は輸出可能、２は現時点では不明、３は不可を意味しています。
+            1のときは表に"OK" 2のときは"???" 3のときはレコードを表示しないでください。
+        </li>
         <li><a href="/Sample/Join/index/" target="blank">正解のページ</a> 商品一覧が確認できます </li>
         <li><a href="/Exam<?=$_SESSION['applicant_id']?>/Join/index/" target="blank">このページがテストページです</a>
             正解のページのように変更お願いします<br>
@@ -98,7 +104,7 @@
         <li>1. 商品一覧の表示お願いします。テキストボックスに日付を入力して検索できるようにお願いします。</li>
         <li>2. exportabilityが1の時は「OK」、2の時は「???」、3の時はレコードそのものを非表示</li>
         <li>3. パフォーマンスを考慮したプログラミングでお願いします <br>
-          m_category, t_item　のテーブルのレコード数が１００万件あることを想定</li>
+          m_category, t_item　のテーブルのレコード数が大量にある</li>
     </ul>
 </div>
 

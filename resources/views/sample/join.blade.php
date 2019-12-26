@@ -28,7 +28,7 @@
 <div id="ad" style="text-align: center;"><iframe src="/htm/ad/" width="320" height="50" frameborder="0" scrolling="no"></iframe></div>
 
 <table border="1">
-<tr><th style="width:33%;">item name</th><th style="width:33%;">category name</th><th style="width:33%;">exportability</th></tr>
+<tr><th style="width:25%;">item name</th><th style="width:25%;">category name</th><th style="width:25%;">exportability</th><th style="width:25%;">created_at</th></tr>
 <?php foreach ($item as $d) { if($d['exportability'] != 3){?>
 <tr><td>
     <?=$d['item_name']?>
@@ -42,6 +42,9 @@
     <?php } else if ($d['exportability'] == 2) {?>
       ???
     <?php } ?>
+  </td>
+  <td>
+    <?=$d['created_at']?>
   </td>
 </tr>
 <?php } } ?>

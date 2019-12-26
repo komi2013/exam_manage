@@ -19,7 +19,7 @@ class JoinController extends Controller {
             $arr = [];
             $arr['item_id'] = $d->item_id;
             $arr['item_name'] = $d->item_name;
-            $arr['created_at'] = $d->created_at;
+            $arr['created_at'] = date("Y-m-d", strtotime($d->created_at));
             $arr['category_id'] = $d->category_id;
             $arr['category_name'] = '';
             $arr['exportability'] = 0;

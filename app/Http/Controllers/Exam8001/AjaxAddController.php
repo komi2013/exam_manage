@@ -12,5 +12,8 @@ class AjaxAddController extends Controller {
         
         return view('exam8001.ajax_add', compact('obj'));
     }
-
+    public function fizzbuzz(Request $request) {
+        
+        return view('exam8001.fizzbuzz');
+    }
 }
